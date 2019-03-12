@@ -31,17 +31,27 @@ fruit.save();
 
 const personSchema = new mongoose.Schema({
     name: String, 
-    age: Number
+    age: Number,
+    favouriteFruit: fruitSchema
 })
 
 const Person = mongoose.model('Person', personSchema)
 
+const pineapple = new Fruit({
+    name: "Pineapple", 
+    score: 9, 
+    review: "Great fruit."
+});
+
+pineapple.save();
+
 const person = new Person ({
-    name: 'John', 
-    age: 37
+    name: 'Amy', 
+    age: 12,
+    favouriteFruit: pineapple
 })
 
-// person.save();
+person.save();
 
 
 
@@ -87,4 +97,4 @@ Fruit.deleteOne({name: "Peach"}, function(err){
     } else {
         console.log('Successfully deleted the document')
     }
-})
+});
