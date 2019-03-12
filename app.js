@@ -79,3 +79,12 @@ Fruit.updateOne({_id: "ref #"}, {name: "Peach"}, function(err){
         console.log('successfully updated the document."')
     }
 })
+
+// Deleting the document:
+Fruit.deleteOne({name: "Peach"}, function(err){
+    if(err) {
+        console.log(err)
+    } else {
+        console.log('Successfully deleted the document')
+    }
+})
