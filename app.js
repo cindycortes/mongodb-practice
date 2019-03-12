@@ -21,8 +21,8 @@ const Fruit = mongoose.model('Fruit', fruitSchema) // mongoose will create a plu
 // new fruit 
 const fruit = new Fruit ({
     
-    rating: 34, 
-    review: "Pretty solid as a fruit."
+    rating: 9, 
+    review: "Peaches are delicious."
 })
 
 fruit.save();
@@ -58,3 +58,24 @@ const findDocuments = function (db, callback) {
         callback(fruits);
     });
 }
+
+Fruit.find(function(err, fruits) {
+    if (err) {
+        console.log(err);
+    }else {
+        mongoose.connection.close();
+
+        fruits.forEach(function(fruit){
+            console.log(fruit.name);
+        });
+    }
+});
+
+// Updating the document
+Fruit.updateOne({_id: "ref #"}, {name: "Peach"}, function(err){
+    if(err) {
+        console.log(err);
+    }else {
+        console.log('successfully updated the document."')
+    }
+})
